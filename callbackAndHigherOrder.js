@@ -6,15 +6,15 @@
 */
 
 // CODE HERE
-
+const multiply = (num1, num2, cb) => cb(num1 * num2)
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// multiply(4, 3, answer => {
-//   console.log('The answer is ' + answer) //should console.log 12
-// })
+ multiply(4, 3, answer => {
+   console.log('The answer is ' + answer) //should console.log 12
+ })
 
 
 
@@ -36,15 +36,15 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE 
-
+const first = (arr, cb) => cb(arr[0])
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// first(names, firstName => {
-//   console.log('The first name in names is ' + firstName)
-// })
+first(names, firstName => {
+   console.log('The first name in names is ' + firstName)
+ })
 
 
 
@@ -56,15 +56,15 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE
+const last = (arr, cb) => cb(arr[arr.length - 1])
 
+ //UNCOMMENT THE FUNCTION CALL BELOW
+ //RUN THIS FILE WITH NODE
+ //CHECK YOUR ANSWER
 
-// UNCOMMENT THE FUNCTION CALL BELOW
-// RUN THIS FILE WITH NODE
-// CHECK YOUR ANSWER
-
-// last(names, lastName => {
-//   console.log('The last name in names is ' + lastName)
-// })
+ last(names, lastName => {
+   console.log('The last name in names is ' + lastName)
+ })
 
 
 
@@ -78,19 +78,19 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE 
-
+const contains = (arr, name, cb) => cb(arr.includes(name))
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// contains(names, 'Colt', result => {
-//   if(result === true){
-//     console.log('Colt is in the array')
-//   } else {
-//     console.log('Colt is not in the array')
-//   }
-// })
+ contains(names, 'Colt', result => {
+   if(result === true){
+     console.log('Colt is in the array')
+   } else {
+     console.log('Colt is not in the array')
+   }
+ })
 
 
 
@@ -103,7 +103,18 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE
+const uniq = (arr, cb) => {
+  for (let i = 0; i < arr.length; i++) {
+    for (let x = i + 1; x < arr.length; x++) {
+        if (arr[i] === arr[x]) {
+            arr.splice(x, 1)
+            x--
+        }
+    }
+}
 
+cb(arr)
+}
 /*
   Invoke the uniq function, passing in the names array from above and a callback function.
   The callback function should take in one parameter called uniqArr.
@@ -112,7 +123,7 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE
-
+uniq(names, uniqArr => console.log(`The new names array with all the duplicate items removed is ${uniqArr}.`))
 
 
 ////////// PROBLEM 6 //////////
@@ -123,7 +134,7 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE 
-
+const each = (arr, cb) => arr.forEach((name, i) => cb(name, i))
 
 /*
   Invoke the each function, passing in the names array and a callback function.
@@ -133,7 +144,7 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE
-
+each(names, (item, index) => `The item at index ${index} is ${item}.`)
 
 
 
@@ -159,7 +170,7 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE
-
+const addingFactory = (num1) => (num2) => num1 + num2
 /*
   Now that you have addingFactory, you can create other
   functions from it. 
@@ -173,7 +184,7 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE
-
+var addTen = addingFactory(10)
 /*
   Now the inner function is stored in the addTen variable! 
 
@@ -185,7 +196,8 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE
-
+console.log(addTen(22))
+console.log(addTen(25))
 /*
   Let's make another function from the addingFactory. 
 
@@ -199,8 +211,9 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 
 // CODE HERE
 
-
-
+const addThirty = addingFactory(30)
+console.log(addThirty(22))
+console.log(addThirty(25))
 
 ////////// CHALLENGE 2 //////////
 
@@ -234,7 +247,13 @@ var users = [
 // Do not edit the code above.
 
 // CODE HERE 
-
+const getUserById = (arr, id, cb) => {
+  for (let i = 0; i < arr.length; i++) {
+      if (arr[i].id === id) {
+          return cb(arr[i])
+      }
+  }
+}
 
 
 // UNCOMMENT THE FUNCTION CALL BELOW
